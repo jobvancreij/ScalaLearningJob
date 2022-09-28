@@ -5,9 +5,7 @@ Focus first on book to get more theoretic knowledge
 Make the assignments in the book
 Extra time in adventure world
 
-AOC 2015
-
-Eerste commit intial load
+AOC AOC.2015
 
 Before: | Time spend 4h
 39: Chapter 1/2/3/| AOC if possible             | Time spend 2h | [x]
