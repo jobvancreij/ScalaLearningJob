@@ -1,4 +1,4 @@
-package AOC
+package aoc2020
 
 import scala.io.Source
 
@@ -23,7 +23,6 @@ object day2_part2_two extends App {
       .filter((value, index) => (diff._2 != index))
       .map(x => x._1)
       .mkString
-
 
 
   }
