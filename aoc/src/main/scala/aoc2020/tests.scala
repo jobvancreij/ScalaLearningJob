@@ -1,4 +1,4 @@
-package AOC
+package aoc2020
 
 import scala.io.Source
 
@@ -15,7 +15,7 @@ object tests extends App {
         .zip(word.toList)
         .map((a, b) => if (a == b) 1 else 0)
       if (similarChar.filter(_ == 1).length == similarChar.length - 1) {
-        return head
+        head
           .zip(similarChar)
           .filter((_, b) => b == 1)
           .map((a, _) => a)
@@ -23,7 +23,7 @@ object tests extends App {
       }
 
     }
-    return comparableWords(tail)
+    comparableWords(tail)
 
   }
 
