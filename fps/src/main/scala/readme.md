@@ -19,7 +19,31 @@ def exampleFunc[A](input: A): A = {
 
 println(partial1("hoi", (a,b,c) => a + b + c)("c", "d"))
 ```
-Result = "hoicd"
+Result = "hoicd" <br> 
+
+<b> Variadic functions in Scala</b>: Functions that take zero of more arguments <br> 
+example: (zero of more arguments of type A)<br> 
+
+```scala
+def apply[A](as: A*): List[A] =
+      if (as.isEmpty) Nil
+      else Cons(as.head, apply(as.tail: _*))
+
+```
+
+<b> Apply </b>: Apply function is syntactic sugar that converts (arg) in to an argument call. Example: 
+
+```scala
+object testJob { 
+  def apply(x: Int): Int = { 
+    x * x
+  }
+}
+val test = testJob
+test(5) 
+Output: 25
+```
+
 #### Handy codes 
 
 
