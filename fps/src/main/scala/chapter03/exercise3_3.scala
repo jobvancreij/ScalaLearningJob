@@ -3,7 +3,7 @@ package chapter03
 import chapter03.exercise3_1.List.sum
 import chapter03.exercise3_2.List
 
-object exercise3_2 extends App {
+object exercise3_3 extends App {
   sealed trait List[+A]
   case object Nil extends List[Nothing]
   case class Cons[+A](head: A, tail: List[A]) extends List[A]
@@ -19,10 +19,10 @@ object exercise3_2 extends App {
       case Cons(0.0, _) => 0.0
       case Cons(x, xs) => x * product(xs)
     }
-    def getTail[A](ds: List[A]): List[A] = {
+    def setHead[A](ds: List[A], newVal: A): List[A] = {
       ds match {
         case Nil=> Nil
-        case Cons(x,y) => y
+        case Cons(x,y) => Cons(newVal, y)
       }
     }
 
@@ -33,6 +33,6 @@ object exercise3_2 extends App {
   }
 
   val x = List(1, 2, 3, 4, 5)
-  val tail = List.getTail(x)
+  val tail = List.setHead(x, 4)
   println(tail)}
 
