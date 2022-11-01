@@ -22,6 +22,18 @@ object listImplementation {
         case Nil => z
         case Cons(x, xs) => f(x, foldRight(xs, z)(f))
 
+    def getTail[A](ds: List[A]): List[A] =
+      ds match
+        case Nil=> Nil
+        case Cons(x,y) => y
+    
+    def dropN[A](ds: List[A], n: Int): List[A] =
+      if (n == 0 ){ throw Exception("cannot be zero")}
+      ds match
+        case Nil=> Nil
+        case Cons(x,y) if n > 1  =>  dropN(y, n-1)
+        case Cons(x,y) => y
+
 
     @tailrec
     def foldLeft[A,B](as: List[A], z: B)(f: (B,A) => B): B =

@@ -1,5 +1,6 @@
 package chapter03
-import chapter03.listImplementation.{Cons, Nil, List}
+import chapter03.listImplementation.*
+import chapter03.listImplementation.List.*
 
 object exercise3_4 extends App:
 
