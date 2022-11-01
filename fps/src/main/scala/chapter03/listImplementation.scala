@@ -2,6 +2,8 @@ package chapter03
 
 import chapter03.listImplementation.List.foldRight
 
+import scala.annotation.tailrec
+
 object listImplementation {
 
   sealed trait List[+A]:
@@ -19,6 +21,13 @@ object listImplementation {
       as match
         case Nil => z
         case Cons(x, xs) => f(x, foldRight(xs, z)(f))
+
+
+    @tailrec
+    def foldLeft[A,B](as: List[A], z: B)(f: (B,A) => B): B =
+      as match
+        case Nil => z
+        case Cons(x,xs) => foldLeft(xs,f(z,x))(f)
 
     def sum2(as: List[Int]): Int =
       foldRight(as, 0)((_ + _))
