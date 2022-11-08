@@ -63,6 +63,10 @@ object listImplementation {
         case Cons(x, y) => x + product(y)
       }
 
+    def reverse[A](as: List[A]): List[A] =
+        foldLeft(getTail(as),getHead(as))((x,y) => Cons(y, x))
+
+
     def apply[A](as: A*): List[A] =
       if (as.isEmpty) Nil
       else Cons(as.head, apply(as.tail: _*))
