@@ -9,4 +9,3 @@ object exercise3_1 extends App:
   println(((List(1,2,3).sum3)))
   println(sum(List(1,2,3)))
 
-

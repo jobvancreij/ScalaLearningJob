@@ -11,3 +11,5 @@ object exercise3_2 extends App:
   val tail = getTail(x)
   println(tail)
 
+
+ 
