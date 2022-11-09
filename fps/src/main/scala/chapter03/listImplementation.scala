@@ -17,6 +17,11 @@ object listImplementation {
 
   object List {
 
+    // Constructor utility function which constructs Nil with its element type A
+    // Infererred by the compiler
+    def empty[A]: List[A] =
+      Nil
+
     def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B =
       as match
         case Nil => z
@@ -70,6 +75,12 @@ object listImplementation {
     def apply[A](as: A*): List[A] =
       if (as.isEmpty) Nil
       else Cons(as.head, apply(as.tail: _*))
+
+    def appendRight[A](as: List[A], z: List[A]): List[A] = // Doesn't work when I try A instead of List[A]
+      foldRight(as,z)(Cons(_,_))
+
+    def appendLeft[A](as: List[A], z: List[A]): List[A] =
+      foldLeft(reverse(as), z)((x,y) => Cons(y,x))
 
   }
 }
