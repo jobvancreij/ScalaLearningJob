@@ -1,0 +1,18 @@
+
+package chapter03
+
+import chapter03.listImplementation.*
+import chapter03.listImplementation.List.*
+
+import scala.annotation.tailrec
+
+
+object exercise3_16 extends App:
+
+  def addOne(as: List[Int]): List[Int] =
+    as match {
+      case Nil => Nil
+      case Cons(x,y)
+    }
+
+  println(addOne(List(1,2,3)))
