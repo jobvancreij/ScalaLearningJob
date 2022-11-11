@@ -82,6 +82,14 @@ object listImplementation {
     def appendLeft[A](as: List[A], z: List[A]): List[A] =
       foldLeft(reverse(as), z)((x,y) => Cons(y,x))
 
+    def map[A,B](as: List[A])(f: A => B): List[B] =
+      as match
+        case Nil => Nil
+        case Cons(x,y) => Cons(f(x), if (y == Nil) Nil else map(y)(f))
+
+    def concat[A](as: List[List[A]]): List[A] =
+        foldLeft(as, List.empty[A])((z,a) => appendLeft(z,a ))
+
   }
 }
 
