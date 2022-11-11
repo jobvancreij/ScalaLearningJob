@@ -7,8 +7,7 @@ import chapter03.listImplementation.List.*
 import scala.annotation.tailrec
 
 
-object exercise3_18 extends App:
+object exercise3_23 extends App:
 
-
-  println(map(List(1,2,3))((x) => x *2))
-  println(map(List(1,2,3))((x) => x / 2))
+ 
+  println(map(zip(List("a","b","c"), List("d","e","f")))((x,y) => x + y))
