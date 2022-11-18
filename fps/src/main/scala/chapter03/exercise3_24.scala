@@ -19,9 +19,9 @@ object exercise3_24 extends App:
       // For exmaple --> List(1), List(1,2), List(1,2,3), List(1,2,3,4).
       // Other combinations such as List(2,3) are looked for when the outerloop calls again.
       supsup match {
-        case Nil => false
-        case Cons(x,y) =>
-          if(append(checks, x) == sub) true else innerloop(y, append(checks, x))
+        case Nil                                       => false
+        case Cons(x,y)  if(append(checks, x) == sub)   => true
+        case Cons(x,y)                                 => innerloop(y, append(checks, x))
       }
     def outerLoop(outerSup: List[A], el: List[A] = List.empty): Boolean =
       // This function loop through the list and makes it 1 item smaller every time

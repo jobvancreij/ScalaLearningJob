@@ -10,6 +10,6 @@ import scala.annotation.tailrec
 object exercise3_17 extends App:
 
   def doubleToString(as: List[Double]): List[String] =
-    map(as)((x) => x.toString)
+    map(as)(_.toString)
 
   println(doubleToString(List(1,2,3,4)))

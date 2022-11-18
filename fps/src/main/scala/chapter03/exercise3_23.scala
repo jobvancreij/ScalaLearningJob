@@ -10,4 +10,4 @@ import scala.annotation.tailrec
 object exercise3_23 extends App:
 
  
-  println(map(zip(List("a","b","c"), List("d","e","f")))((x,y) => x + y))
+  println(map(zip(List("a","b","c"), List("d","e","f")))(_+_))
