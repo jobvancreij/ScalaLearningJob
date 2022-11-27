@@ -41,7 +41,6 @@ object exercise03 extends App:
                   alLocations(oddOrEven(input,false))
   ).distinct.length
 
-
   println(s"Nbr of unique adresses = ${(part1)}")
   println(s"Nbr of unique adresses  part2 = ${(part2)}")
 
