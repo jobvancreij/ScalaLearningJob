@@ -1,6 +1,7 @@
 package chapter03
 
-import chapter03.listImplementation.List.foldRight
+
+import chapter03.listImplementation.List.foldRight // Why do I have to import this for sum3??
 
 import scala.annotation.tailrec
 
@@ -81,6 +82,35 @@ object listImplementation {
 
     def appendLeft[A](as: List[A], z: List[A]): List[A] =
       foldLeft(reverse(as), z)((x,y) => Cons(y,x))
+
+    def concat[A](as: List[List[A]]): List[A] =
+        foldLeft(as, List.empty[A])((z,a) => appendLeft(z,a ))
+
+    def flatMap[A,B](as: List[A])(f: A => (List[B])): List[B] =
+      concat(map(as)(f))
+
+    def filter[A](as: List[A])(f: A => Boolean): List[A] =
+      as match
+        case Nil => Nil
+        case Cons(x,y) => if  (!f(x)) Cons(x,filter(y)(f))  else filter(y)(f)
+
+    def map[A,B](as: List[A])(f: A => B): List[B] =
+        as match 
+          case Nil => Nil
+          case Cons(x,y) => Cons(f(x), map(y)(f))
+
+    def zip[A, B](as: List[A], bs: List[B]): List[(A,B)] =
+      (as,bs) match
+        case (Nil, _) => Nil
+        case (_, Nil) => Nil
+        case (Cons(a,b), Cons(c,d)) => Cons((a,c), zip(b,d))
+    
+    def append[A](as: List[A], a: A): List[A] =
+      reverse(Cons(a, reverse(as)))
+
+
+
+
 
   }
 }

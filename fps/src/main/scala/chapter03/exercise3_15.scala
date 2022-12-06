@@ -9,8 +9,6 @@ import scala.annotation.tailrec
 
 object exercise3_15 extends App:
 
-  def concat[A](as: List[List[A]]): List[A] =
-    foldLeft(as, List.empty[A])((z,a) => appendLeft(z,a ))
 
 
   // foldLeft(as, (b: List[Int]) => List[Int])
