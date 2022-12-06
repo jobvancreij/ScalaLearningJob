@@ -31,7 +31,7 @@ object exercise05 extends App:
 
     def inner(as: List[Tuple]): Boolean =
       as match
-        case Nil           => false
+        case Nil                 => false
         case (a,b)::tail if a==b => true
         case (a,b)::tail if a!=b => inner(tail)
 

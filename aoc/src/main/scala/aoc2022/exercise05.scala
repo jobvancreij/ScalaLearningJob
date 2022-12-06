@@ -6,7 +6,7 @@ import scala.io.Source
 
 
 
-object exercise052 extends App:
+object exercise05 extends App:
   // Read input
   var input = readInput("exercise05")
     .mkString("\n")
