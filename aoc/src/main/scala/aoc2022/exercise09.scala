@@ -35,7 +35,7 @@ object exercise09 extends App:
             case (h,v) if h.abs <= 1 && v.abs == 2   =>  Grid.moveGrid(t, vert(v))
             // Kf diff horizontal 2 and vertical 1 move horitzontal
             case (h,v) if h.abs == 2 && v.abs <= 1  =>  Grid.moveGrid(t, hor(h))
-            case (h,v) => Coord(t.hc,t.vc)
+            case (h,v) => t
 
       val newTail = g.allTails.scanLeft(g.h)((x,y) => inner(x,y)).tail // only take tail don't want the g.h
       g.copy(allTails = newTail,visited = g.visited.concat(List(newTail.reverse.head)))
