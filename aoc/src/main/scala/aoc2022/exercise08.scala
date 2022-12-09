@@ -7,11 +7,11 @@ import scala.collection.mutable.Map
 object exercise08 extends App:
 
   def lookAway(coord: List[(Int,Int)], l: Int): Int =
-    // Get point for trees surrounding
+  // Get point for trees surrounding
     coord match
-      case Nil                               => 0
-      case h::t if mapAllGrids(h).l >= l     => 1
-      case h::t if mapAllGrids(h).l < l      => 1 + lookAway(t,l)
+     case Nil                               => 0
+     case h::t if mapAllGrids(h).l >= l     => 1
+     case h::t if mapAllGrids(h).l < l      => 1 + lookAway(t,l)
 
 
   case class MetaInfo(wMin: Int,wMax: Int,hMin: Int,hMax: Int)
@@ -38,38 +38,33 @@ object exercise08 extends App:
 
 
   val inputFile = readInput("exercise08")
-  .map(_.split("").toList)
-  .toList
+    .map(_.split("").toList)
+    .toList
 
   // Get meta info
   val meta = MetaInfo(0,inputFile(0).length , 0, inputFile.length)
 
 
   val allGrids = inputFile
-  .flatten
-  .toList
-  .zipWithIndex
-  .map((l,i) => standardGrid(if i > 0 then math.floor(i/meta.wMax).toInt else 0, i % meta.wMax, l.toInt))
+   .flatten
+    .toList
+    .zipWithIndex
+    .map((l,i) => standardGrid(if i > 0 then math.floor(i/meta.wMax).toInt else 0, i % meta.wMax, l.toInt))
 
   // Make a map with all the grids with coordinate as  keys
   val mapAllGrids = allGrids.map((x) => ((x.h,x.w), x))
-  .toMap
+    .toMap
 
   var Ex1 = allGrids
-          .map((x) => GridEx1(x.h,x.w,x.l))
-          .map(_.visible)
-          .filter(identity)
-          .length
+   .map((x) => GridEx1(x.h,x.w,x.l))
+   .map(_.visible)
+   .filter(identity)
+    .length
 
 
   val Ex2 = allGrids.map((x) => GridEx2(x.h,x.w,x.l).points)
-          .max
+    .max
 
   println(s"Answer to question 1 = ${Ex1}")
   println(s"Answer to question 2 = ${Ex2}")
 
-//  FFFFF
-//  FFFFF
-//  FFFFF
-//  FFFFT
-//  FFFTF
