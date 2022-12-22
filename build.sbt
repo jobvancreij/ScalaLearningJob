@@ -12,6 +12,8 @@ lazy val aoc = project
   .settings( name           := "aoc"
     , version              := "0.1.0"
     , scalaVersion         := "3.2.0"
-    , libraryDependencies ++=
-      Seq("org.scalacheck" %% "scalacheck" % "1.17.0" % "test")
+    , libraryDependencies ++= Seq(
+      "org.scalacheck" %% "scalacheck" % "1.17.0" % "test",
+      "org.scalatest"  %% "scalatest"  % "3.2.14" % "test"
+    )
   )
