@@ -12,6 +12,7 @@ object exercise08 extends App:
       case Nil                               => 0
       case h::t if mapAllGrids(h).l >= l     => 1
       case h::t if mapAllGrids(h).l < l      => 1 + lookAway(t,l)
+      case _ => sys.error("boom")
 
 
   case class MetaInfo(wMin: Int,wMax: Int,hMin: Int,hMax: Int)

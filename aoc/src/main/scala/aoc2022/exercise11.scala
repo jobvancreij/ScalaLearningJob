@@ -8,10 +8,10 @@ import scala.collection.mutable.Map
 object exercise11 extends App:
 
   def stringToAct(s: String) =  s match
-        case "+" => (x: Int,y: Int) => x + y
-        case "*" => (x: Int,y: Int) => x * y
+        case "+" => (x: Long,y: Long) => x + y
+        case "*" => (x: Long,y: Long) => x * y
 
-  case class Monkey(id: Int, startItems: List[Long], Op: (String,String,String), Test: Int, ift: Int, iff: Int, inspects: Int=0):
+  case class Monkey(id: Long, startItems: List[Long], Op: (String,String,String), Test: Long, ift: Long, iff: Long, inspects: Long=0):
       val firstItem: Option[Long]= if startItems.length > 0 then Some(startItems.head) else None
       def worryLevel = stringToAct(Op(1))(oldOrNbr(Op(0)) , oldOrNbr(Op(2))) % 96577
       def testOucome = (worryLevel % Test) == 0
@@ -24,7 +24,7 @@ object exercise11 extends App:
           case "old" => firstItem.get
           case _     => str.toLong
 
-//      def throwItem(receiverNbr: Int) =
+//      def throwItem(receiverNbr: Long) =
 //        val item = this.startItems.head
 //        monkeys(this.id) = this.copy(startItems=this.startItems.tail,inspects = this.inspects + 1)
 //        val throwTo = monkeys(receiverNbr)
@@ -44,24 +44,24 @@ object exercise11 extends App:
 
   object Monkey:
     def fromString(inp: List[String]): Monkey =
-      def getId(inp: String): Int =
+      def getId(inp: String): Long =
         inp.strip match
-          case s"Monkey $id:" => id.toInt
+          case s"Monkey $id:" => id.toLong
       def startItems(items: String): List[Long] =
         items.strip match
           case s"Starting items: ${items}" => items.split(",").map(_.strip.toLong).toList
       def operation(inp: String): (String,String,String) =
         inp.strip match  // make list with 3 items later
           case s"Operation: new = ${a} ${x} ${b}" => (a,x,b)
-      def test(inp: String): Int =
+      def test(inp: String): Long =
         inp.strip match  // make list with 3 items later
-          case s"Test: divisible by ${x}" => x.toInt
-      def ifTrue(inp: String): Int =
+          case s"Test: divisible by ${x}" => x.toLong
+      def ifTrue(inp: String): Long =
         inp.strip match  // make list with 3 items later
-          case s"If true: throw to monkey ${nbr}" => nbr.toInt
-      def ifFalse(inp: String): Int =
+          case s"If true: throw to monkey ${nbr}" => nbr.toLong
+      def ifFalse(inp: String): Long =
         inp.strip match  // make list with 3 items later
-          case s"If false: throw to monkey ${nbr}" => nbr.toInt
+          case s"If false: throw to monkey ${nbr}" => nbr.toLong
 
       Monkey(getId(inp(0)), startItems(inp(1)), operation(inp(2)), test(inp(3)), ifTrue(inp(4)), ifFalse(inp(5)))
 
