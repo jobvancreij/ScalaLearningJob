@@ -1,6 +1,6 @@
 package aoc2022
 
-import aoc2022.standardAoc.readInput
+import aoc2022.standard.readInput
 
 import scala.collection.mutable.Map
 import scala.io.Source

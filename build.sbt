@@ -4,7 +4,9 @@ lazy val fps = project
     , version              := "0.1.0"
     , scalaVersion         := "3.2.0"
     , libraryDependencies ++=
-      Seq("org.scalacheck" %% "scalacheck" % "1.17.0" % "test")
+      Seq("org.scalacheck" %% "scalacheck" % "1.17.0" % "test",
+          "org.scalatest"  %% "scalatest"  % "3.2.15" % "test")
+
   )
 
 lazy val aoc = project
@@ -13,5 +15,7 @@ lazy val aoc = project
     , version              := "0.1.0"
     , scalaVersion         := "3.2.0"
     , libraryDependencies ++=
-      Seq("org.scalacheck" %% "scalacheck" % "1.17.0" % "test")
+      Seq("org.scalacheck" %% "scalacheck" % "1.17.0" % "test",
+        "org.scalatest"  %% "scalatest"  % "3.2.15" % "test")
+
   )
