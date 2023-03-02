@@ -5,10 +5,11 @@ class TestCafe extends AnyFunSuite:
 
   val cc = Creditcard(100)
   val coffee = Coffee(2.5)
+  val charge =
 
 
   test("testCoffee") {
-    assertResult(2.6)(actual = coffee.price)
+    assertResult(2.5)(actual = coffee.price)
   }
 
   test("testBuyCoffee") {
