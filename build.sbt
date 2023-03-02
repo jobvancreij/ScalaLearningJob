@@ -16,6 +16,7 @@ lazy val aoc = project
     , scalaVersion         := "3.2.0"
     , libraryDependencies ++=
       Seq("org.scalacheck" %% "scalacheck" % "1.17.0" % "test",
-        "org.scalatest"  %% "scalatest"  % "3.2.15" % "test")
+        "org.scalatest"  %% "scalatest"  % "3.2.15" % "test",
+      )
 
   )

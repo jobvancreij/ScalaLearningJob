@@ -5,14 +5,36 @@ case object Nil extends List[Nothing]
 case class Cons[+A](head: A, tail: List[A]) extends List[A]
 object List:
 
-  extension (l: List[Int]) def sum: Int = l match
-    case Nil => 0
-    case Cons(x,xs) => x + xs.sum
+  extension (l: List[Int]) def sum: Option[Int] = l match
+    case Nil => None
+    case Cons(x,xs) => Some(x + xs.sum.getOrElse(0))
 
-  extension (l: List[Int]) def product: Double = l match
-    case Nil          => 1.0
-    case Cons(0.0, _) => 0.0
-    case Cons(x,xs)   => x * xs.product
+  extension (l: List[Int]) def product: Option[Double] = l match
+    case Nil          => None
+    case Cons(0.0, _) => Some(0.0)
+    case Cons(x,xs)   => Some(x * xs.product.getOrElse(1.0))
+
+  extension[A] (l: List[A]) def tail: List[A] = l match
+    case Nil => Nil
+    case Cons(_, x) => x
+
+  extension[A] (l: List[A]) def setHead(arg: A): List[A] = l match
+    case Nil => Cons(arg, Nil)
+    case x => Cons(arg, x)
+
+  extension[A] (l: List[A]) def dropN(n: Int): List[A] =
+
+    def inner(inp: List[A], xn: Int): List[A] = inp match
+      case Nil => Nil
+      case _   => if xn > 1 then inner(inp.tail, xn-1) else inp.tail
+
+    inner(l, n-1) // -1 for first iteration
+
+  extension[A] (l: List[A]) def dropWhile(f: A => Boolean): List[A] = l match
+    case Nil               => Nil
+    case Cons(h,t) if f(h) => t.dropWhile(f)
+    case Cons(h,t)         => Cons(h, t.dropWhile(f))
+
 
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) then Nil

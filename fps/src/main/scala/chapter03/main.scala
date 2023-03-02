@@ -5,5 +5,7 @@ object main extends App {
   val testList = List(1,2,3,4)
   println(testList.sum)
   println(testList.product)
+  println(testList.tail)
+  println(testList.setHead(10))
 
 }
