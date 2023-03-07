@@ -23,7 +23,6 @@ object List:
     case x => Cons(arg, x)
 
   extension[A] (l: List[A]) def dropN(n: Int): List[A] =
-
     def inner(inp: List[A], xn: Int): List[A] = inp match
       case Nil => Nil
       case _   => if xn > 1 then inner(inp.tail, xn-1) else inp.tail
@@ -34,8 +33,20 @@ object List:
     case Nil               => Nil
     case Cons(h,t) if f(h) => t.dropWhile(f)
     case Cons(h,t)         => Cons(h, t.dropWhile(f))
+  
+  extension[A](l: List[A]) def initList: List[A] = l match
+    case Nil          => Nil
+    case Cons(_,Nil)  => Nil
+    case Cons(x,y)    => Cons(x, y.initList)
+    
+  extension[A](l: List[A]) def foldRight[B](startVal: B)(f: (A, B) => B):  B = l match
+    case Nil       => startVal
+    case Cons(x,y) => f(x, y.foldRight(startVal)(f))
 
-
+  extension[A] (l: List[A]) def foldLeft[B](startVal: B)(f: (B,A) => B): B = l match
+    case Nil => startVal
+    case Cons(x, y) => y.foldLeft(f(startVal,x))(f)
+  
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) then Nil
     else Cons(as.head, apply(as.tail: _*))

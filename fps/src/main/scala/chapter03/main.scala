@@ -7,5 +7,8 @@ object main extends App {
   println(testList.product)
   println(testList.tail)
   println(testList.setHead(10))
+  println(testList.initList)
+  println(testList.foldRight(1)((x,y) => x + y))
+  println(testList.foldLeft(1)((x,y) => x + y))
 
 }

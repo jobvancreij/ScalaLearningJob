@@ -13,7 +13,7 @@ class TestCafe extends AnyFunSuite:
   }
 
   test("testBuyCoffee") {
-    assertResult(expected=coffee, Charge(cc, 2.5))(actual = buyCoffee(cc))
+    assertResult(expected=(coffee, Charge(cc, 2.5)))(actual = buyCoffee(cc))
   }
 
   test("testBuyCoffees") {

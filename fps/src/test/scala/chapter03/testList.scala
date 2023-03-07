@@ -49,3 +49,10 @@ class testList extends AnyFunSuite:
 
   }
 
+  test("testInitList") {
+    assertResult(Nil)(actual = emptyList.initList)
+    assertResult(Nil)(actual = oneItemList.initList)
+    assertResult(List(1))(actual = twoItemList.initList)
+
+  }
+
