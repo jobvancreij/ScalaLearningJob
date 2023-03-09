@@ -10,5 +10,10 @@ object main extends App {
   println(testList.initList)
   println(testList.foldRight(1)((x,y) => x + y))
   println(testList.foldLeft(1)((x,y) => x + y))
+  println(testList.foldSum)
+  println(testList.reverse)
+  println(testList.foldLeftFromRight(0)((a: Int, b: Int) => a+b))
+  println(testList.foldRightFromLeft(0)((a: Int, b: Int) => a+b))
+
 
 }

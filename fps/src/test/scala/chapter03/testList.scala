@@ -49,6 +49,20 @@ class testList extends AnyFunSuite:
 
   }
 
+  test("testfoldSum") {
+    assertResult(0)(actual = emptyList.foldSum)
+    assertResult(1)(actual = oneItemList.foldSum)
+    assertResult(3)(actual = twoItemList.foldSum)
+
+  }
+
+  test("testfoldProduct") {
+    assertResult(1)(actual = emptyList.foldProduct)
+    assertResult(1)(actual = oneItemList.foldProduct)
+    assertResult(2)(actual = twoItemList.foldProduct)
+
+  }
+
   test("testInitList") {
     assertResult(Nil)(actual = emptyList.initList)
     assertResult(Nil)(actual = oneItemList.initList)
