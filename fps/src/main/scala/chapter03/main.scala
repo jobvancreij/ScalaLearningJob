@@ -20,7 +20,10 @@ object main extends App {
   println(List[Double](1,2,3,4,5).doubleToString)
   println(List(1,2,3,4,5).map((x) => x.toDouble))
   println(testList.filter(x => x != 1))
-  println(List(List(1,2,3),List(4,5,6)).flatMap(x => x *2))
+  println(List(1,2,3).flatMap(x => List(x,x)))
+  println(List(1,2,3).map(x => List(x,x)))
+  println(List(1,2,3).zipWith(List(4,5,6))((x,y) => x+y))
+  println(List(1,2,3,4,5).hasSubsequence(List(3,4)))
 
 
 
