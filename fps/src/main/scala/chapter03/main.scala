@@ -14,6 +14,14 @@ object main extends App {
   println(testList.reverse)
   println(testList.foldLeftFromRight(0)((a: Int, b: Int) => a+b))
   println(testList.foldRightFromLeft(0)((a: Int, b: Int) => a+b))
+  println(testList.append(List(10)))
+  println(List(List(1,2,2), List(4,5,6)).concat)
+  println(testList.addOne)
+  println(List[Double](1,2,3,4,5).doubleToString)
+  println(List(1,2,3,4,5).map((x) => x.toDouble))
+  println(testList.filter(x => x != 1))
+  println(List(List(1,2,3),List(4,5,6)).flatMap(x => x *2))
+
 
 
 }

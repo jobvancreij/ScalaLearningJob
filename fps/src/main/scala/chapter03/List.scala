@@ -69,10 +69,38 @@ object List:
 
   extension[A] (l: List[A])
     def foldRightFromLeft[B](startVal: B)(f: (A,B) => B): B =
-
       l.foldRight((b: B) => b)((a,g) => b => g(f(a,b)))(startVal)
 
-//      (B,A) => B
+
+  extension[A] (l: List[A])
+    def append(inp: List[A]): List[A] =
+      l.foldRight(inp)(Cons(_,_))
+
+  extension[A] (l: List[List[A]])
+    def concat: List[A] =
+      l.foldRight(Nil: List[A])((a,b) => b.append(a))
+
+  extension[A] (l: List[Int])
+    def addOne: List[Int] =
+       l.foldLeft(Nil: List[Int])((a, b) => a.append(List(b+1)))
+
+  extension[A] (l: List[Double])
+    def doubleToString: List[String] =
+      l.foldLeft(Nil: List[String])((a, b) => a.append(List(b.toString)))
+
+  extension[A] (l: List[A])
+    def map[B](f:A => B): List[B] =
+      l.foldLeft(Nil: List[B])((a, b) => a.append(List(f(b))))
+
+  extension[A] (l: List[A])
+    def filter(f: A => Boolean): List[A] =
+      l.foldLeft(Nil: List[A])((a, b) => if f(b) then a.append(List(b)) else a)
+
+  extension[A] (l: List[List[A]])
+    def flatMap[B](f: A => B): List[B] =
+      l.foldLeft(Nil: List[B])((a, b) => a.append(b.map(f)))
+
+  //      (B,A) => B
 //        ((B,A) => B,A) =>
 //
 //

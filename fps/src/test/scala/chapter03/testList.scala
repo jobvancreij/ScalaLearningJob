@@ -70,3 +70,9 @@ class testList extends AnyFunSuite:
 
   }
 
+  test("testAppend") {
+    assertResult(List(1))(actual = emptyList.append(1))
+    assertResult(List(1, 1))(actual = oneItemList.append(1))
+    assertResult(List(1, 2, 1))(actual = twoItemList.append(1))
+  }
+
