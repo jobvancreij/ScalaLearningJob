@@ -1,6 +1,8 @@
 package chapter03
 import chapter03.List
 import chapter03.List.sum
+import chapter03.Trees.{Branch, Leaf, Tree}
+import chapter03.Trees.Tree.*
 object main extends App {
   val testList = List(1,2,3,4)
   println(testList.sum)
@@ -26,5 +28,15 @@ object main extends App {
   println(List(1,2,3,4,5).hasSubsequence(List(3,4)))
 
 
+  val exampleTree = Branch(Leaf(1), Branch(Leaf(2), Leaf(3)))
+  println(size(exampleTree))
+  println(exampleTree.max)
+  println(depth(exampleTree))
+  println(map(exampleTree)((x) => x*2))
+  println(fold(exampleTree, (z) => z*10,(x,y) => x+y))
+  println(sizeViaFold(exampleTree))
+  println(maximumViaFold(exampleTree))
+  println(depthViaFold(exampleTree))
+  println(mapViaFold(exampleTree)((x) => 3))
 
 }
